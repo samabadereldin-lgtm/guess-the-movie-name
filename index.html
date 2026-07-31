@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" id="htmlTag">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Guess The Movie Name - خمن اسم الفيلم</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="top-bar">
+        <button id="globalHomeBtn" class="top-btn">
+            🏠 Home
+        </button>
+    
+        <div class="top-info">
+            ❤️ <span id="topLives">3</span>
+        </div>
+    
+        <div class="top-info">
+            <span class="coin-shape">🪙</span> <span id="topCoins">0</span>
+        </div>
+    
+        <button id="settingsBtn" class="top-btn">
+            ⚙️
+        </button>
+    </div>
+
+    <div class="lang-switcher">
+        <button class="lang-btn active" id="btnAr">العربية</button>
+        <button class="lang-btn" id="btnEn">English</button>
+    </div>
+
+    <div id="homeScreen" class="home-screen">
+        <h1 class="logo">🎬 Movie Guess</h1>
+        <p class="welcome" id="welcomeText">Guess Movies From Emojis</p>
+
+        <button class="home-btn" id="playBtn">▶ Play</button>
+        <button class="home-btn" id="leaderboardBtn">🏆 Leaderboard</button>
+        <button class="home-btn" id="achievementsBtn">🏅 Achievements</button>
+        <button class="home-btn" id="shopBtn">🛒 Shop</button>
+    </div>
+
+    <div id="categoryScreen" class="category-screen">
+        <h2 style="color:white; margin-bottom: 10px;">🎬 Choose Category</h2>
+        <button class="category-btn" data-category="arabic">🇪🇬 Arabic Movies</button>
+        <button class="category-btn" data-category="english">🌍 English Movies</button>
+        <button class="category-btn" data-category="anime">🎌 Anime</button>
+        <button class="category-btn" data-category="series">📺 TV Series</button>
+        <button class="category-btn" data-category="marvel">🦸 Marvel</button>
+        <button class="category-btn" data-category="disney">🐭 Disney</button>
+        <button id="backHome" class="home-btn" style="margin-top: 15px;">⬅ Back</button>
+    </div>
+
+    <div id="difficultyScreen" class="difficulty-screen">
+        <h2 style="color:white; margin-bottom: 10px;">🎯 Choose Difficulty</h2>
+        <button class="difficulty-btn" data-level="easy">😊 Easy</button>
+        <button class="difficulty-btn" data-level="medium">😎 Medium</button>
+        <button class="difficulty-btn" data-level="hard">🔥 Hard</button>
+        <button class="difficulty-btn" data-level="impossible">💀 Impossible</button>
+        <button id="backCategory" class="home-btn" style="margin-top: 15px;">⬅ Back</button>
+    </div>
+
+    <div class="game-container" id="gameBox" style="display:none;">
+        <button id="homeGameBtn" class="home-back-btn" style="display:none;">🏠 Home</button>
+        
+        <div class="dashboard">
+            <div class="dash-card">
+                <div class="dash-label" id="labelTimer">الوقت المتبقي</div>
+                <div class="dash-value" id="timerValue">60s</div>
+            </div>
+            <div class="dash-card">
+                <div class="dash-label" id="labelLives">المحاولات</div>
+                <div class="dash-value" id="livesValue">❤️❤️❤️</div>
+            </div>
+            <div class="dash-card">
+                <div class="dash-label" id="labelScore">النقاط</div>
+                <div class="dash-value" id="scoreValue">0</div>
+            </div>
+            <div class="dash-card coins-card">
+                <div class="dash-label">Coins</div>
+                <div class="coins-box">
+                    <span class="coin-shape">🪙</span>
+                    <span id="coinsValue">0</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="level-box">
+            <div class="level-header">
+                <span id="levelText">⭐ Level 1</span>
+                <span id="xpText">0 / 100 XP</span>
+            </div>
+            <div class="xp-bar">
+                <div id="xpFill"></div>
+            </div>
+        </div>
+
+        <h1 id="mainTitle">تحدي الأفلام الأركيد</h1>
+        
+        <div class="emoji-box" id="emojiContainer">🎬</div>
+
+        <div class="input-wrapper">
+            <div class="input-icon-wrapper">
+                <i class="fa-solid fa-clapperboard"></i>
+                <input type="text" id="guessInput" placeholder="اكتب اسم الفيلم هنا..." autocomplete="off">
+            </div>
+            <div class="autocomplete-list" id="autocompleteList"></div>
+        </div>
+
+        <div class="btn-group">
+            <button id="submitBtn" class="action-btn">
+                <i class="fa-solid fa-bolt"></i> <span id="submitBtnText">تحقق</span>
+            </button>
+            <button id="hintBtn" class="action-btn hint-btn">
+                <i class="fa-solid fa-lightbulb"></i> <span id="hintBtnText">تلميح (100🪙)</span>
+            </button>
+            <button id="skipBtn" class="action-btn skip-btn">
+                <i class="fa-solid fa-forward"></i> <span id="skipBtnText">تخطي (80🪙)</span>
+            </button>
+        </div>
+
+        <p id="message"></p>
+    </div>
+
+    <div id="shopScreen" class="shop-screen">
+        <h2 style="color:white; margin-bottom:10px;">🛒 Shop</h2>
+        <button class="shop-item" id="buyLife">
+            ❤️ Extra Life
+            <span>150 🪙</span>
+        </button>
+        <button class="shop-item" id="buyHint">
+            💡 Hint
+            <span>100 🪙</span>
+        </button>
+        <button class="shop-item" id="buyTime">
+            ⏱️ +30 Seconds
+            <span>200 🪙</span>
+        </button>
+        <button class="shop-item" id="buySkip">
+            ⏭️ Skip Movie
+            <span>80 🪙</span>
+        </button>
+        <button id="closeShop" class="home-btn" style="margin-top: 15px;">Close</button>
+    </div>
+
+    <div id="achievementsScreen" class="shop-screen">
+        <h2 style="color:white; margin-bottom:10px;">🏆 Achievements</h2>
+        <div class="achievement-item" id="ach1">
+            <span>🔰 First Correct Answer</span>
+            <span id="ach1Status">❌</span>
+        </div>
+        <div class="achievement-item" id="ach2">
+            <span>🔥 10 Correct Answers</span>
+            <span id="ach2Status">❌</span>
+        </div>
+        <div class="achievement-item" id="ach3">
+            <span>💰 Collect 1000 Coins</span>
+            <span id="ach3Status">❌</span>
+        </div>
+        <div class="achievement-item" id="ach4">
+            <span>⭐ Reach Level 10</span>
+            <span id="ach4Status">❌</span>
+        </div>
+        <button id="closeAchievements" class="home-btn" style="margin-top: 15px;">Close</button>
+    </div>
+
+    <div id="leaderboardScreen" class="shop-screen">
+        <h2 style="color:white; margin-bottom:10px;">🏆 Leaderboard</h2>
+        <div class="achievement-item">
+            <span>1. 🥇 Champion</span>
+            <span style="color:#FFD700; font-weight:bold;">2500 pts</span>
+        </div>
+        <div class="achievement-item">
+            <span>2. 🥈 Pro Player</span>
+            <span style="color:#C0C0C0; font-weight:bold;">1800 pts</span>
+        </div>
+        <div class="achievement-item">
+            <span>3. 🥉 Legend</span>
+            <span style="color:#CD7F32; font-weight:bold;">1200 pts</span>
+        </div>
+        <div class="achievement-item">
+            <span>4. You</span>
+            <span id="leaderboardUserScore" style="color:var(--accent-color); font-weight:bold;">0 pts</span>
+        </div>
+        <button id="closeLeaderboard" class="home-btn" style="margin-top: 15px;">Close</button>
+    </div>
+
+    <div id="userModal" class="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 9999; justify-content: center; align-items: center;">
+        <div class="modal-content" style="background: #1e1e2f; padding: 25px; border-radius: 12px; text-align: center; max-width: 350px; width: 90%; color: #fff;">
+            <div style="margin-bottom: 15px;">
+                <button id="modalBtnAr" class="lang-btn">العربية</button>
+                <button id="modalBtnEn" class="lang-btn">English</button>
+            </div>
+            <h3 id="modalTitle">👋 مرحباً بك! أدخل بياناتك للبدء</h3>
+            <input type="text" id="inputUserName" style="width: 100%; padding: 10px; margin: 10px 0; border-radius: 6px; border: none;">
+            <input type="number" id="inputUserAge" style="width: 100%; padding: 10px; margin: 10px 0; border-radius: 6px; border: none;">
+            <p id="modalError" style="color: red; font-size: 14px; margin: 5px 0;"></p>
+            <button id="saveUserBtn" style="width: 100%; padding: 12px; background: #28a745; color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; margin-top: 10px;"></button>
+        </div>
+    </div>
+
+    <button id="switchUserBtn" class="action-btn">👤 تغيير اللاعب</button>
+    
+    <script src="script.js"></script>
+</body>
+</html>
