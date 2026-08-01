@@ -1,0 +1,13 @@
+{
+  "background_color": "#ffffff",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "Guess the movie name",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "Guess the movie name",
+  "start_url": "/",
+  "theme_color": "#ffffff",
+  "description": "Guess the movie title from emoji clues",
+  "id": "Guess the movie name"
+}
